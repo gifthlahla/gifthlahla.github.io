@@ -59,35 +59,35 @@ gifthlahla.github.io/
 ├── cv-gift-hlahla.pdf # Downloadable CV
 └── project1...5.png # Project screenshots
 
+
 ---
 
 ## Run Locally
 
 Make sure you have **Node.js v18+** and **Git** installed.
 
-1. Clone the repository
 ```bash
+# 1. Clone the repository
 git clone https://github.com/gifthlahla/gifthlahla.github.io.git
 cd gifthlahla.github.io
 
-2. Install dependencies
-```bash
+# 2. Install dependencies
 npm install
 
-3. Start the development server
-```bash
+# 3. Start the development server
 npm run dev
 
-4. Open http://localhost:5173 in your browser
+# 4. Open http://localhost:5173 in your browser
+```
 
 ---
 
 ## Build & Deploy
 
 ```bash
-Build for production (outputs to dist/)
+# Build for production (outputs to dist/)
 npm run build
-
+```
 The contents of dist/ are deployed to GitHub Pages. If this is your user site (username.github.io), push the dist/ folder to the main branch using a deploy script or GitHub Action.
 
 ---
@@ -96,8 +96,8 @@ The contents of dist/ are deployed to GitHub Pages. If this is your user site (u
 
 Email: gifthlhla78@gmail.com
 
-GitHub: github.com/gifthlahla
+GitHub: www.github.com/gifthlahla
 
-LinkedIn: linkedin.com/in/gifthlahla
+LinkedIn: www.linkedin.com/in/gifthlahla
 
 ---
