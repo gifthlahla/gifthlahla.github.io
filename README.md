@@ -33,6 +33,7 @@ My personal portfolio website — a modern, responsive showcase of my skills, pr
 
 ## Project Structure
 
+```markdown
 gifthlahla.github.io/
 ├── .gitignore
 ├── index.html # Vite entry point
@@ -58,7 +59,7 @@ gifthlahla.github.io/
 ├── profile-photo.jpg # My photo
 ├── cv-gift-hlahla.pdf # Downloadable CV
 └── project1...5.png # Project screenshots
-
+```
 
 ---
 
