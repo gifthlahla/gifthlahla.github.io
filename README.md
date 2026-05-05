@@ -97,6 +97,6 @@ Email: gifthlhla78@gmail.com
 
 GitHub: www.github.com/gifthlahla
 
-LinkedIn: www.linkedin.com/in/gifthlahla
+LinkedIn: [www.linkedin.com/in/gifthlahla](http://www.linkedin.com/in/gift-hlahla-9437953b6)
 
 ---
