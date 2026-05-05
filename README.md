@@ -34,29 +34,29 @@ My personal portfolio website — a modern, responsive showcase of my skills, pr
 ```markdown
 gifthlahla.github.io/
 ├── .gitignore
-├── index.html # Vite entry point
-├── package.json # Dependencies & scripts
-├── vite.config.js # Vite + Tailwind + React setup
-├── README.md # You're reading it
+├── index.html                 # Vite entry point
+├── package.json               # Dependencies & scripts
+├── vite.config.js             # Vite + Tailwind + React setup
+├── README.md                  # You're reading it
 ├── src/
-│ ├── main.jsx # React mount point
-│ ├── App.jsx # Main layout, dark mode state
-│ ├── index.css # Tailwind import + custom variant
+│ ├── main.jsx                 # React mount point
+│ ├── App.jsx                  # Main layout, dark mode state
+│ ├── index.css                # Tailwind import + custom variant
 │ └── components/
-│ ├── Navbar.jsx # Sticky navbar, mobile menu, theme toggle
-│ ├── Hero.jsx # Photo, name, tagline, CTAs
-│ ├── About.jsx # Bio + stats
-│ ├── Experience.jsx # Internship & tutoring timeline
-│ ├── Projects.jsx # 5 project cards with tags & links
-│ ├── Skills.jsx # Tech icons + certifications
-│ ├── Education.jsx # University & high school
-│ ├── Contact.jsx # Contact info + working form
-│ └── Footer.jsx # Copyright & back-to-top
+│ ├── Navbar.jsx               # Sticky navbar, mobile menu, theme toggle
+│ ├── Hero.jsx                 # Photo, name, tagline, CTAs
+│ ├── About.jsx                # Bio + stats
+│ ├── Experience.jsx           # Internship & tutoring timeline
+│ ├── Projects.jsx             # 5 project cards with tags & links
+│ ├── Skills.jsx               # Tech icons + certifications
+│ ├── Education.jsx            # University & high school
+│ ├── Contact.jsx              # Contact info + working form
+│ └── Footer.jsx               # Copyright & back-to-top
 └── public/
 └── assets/
-├── profile-photo.jpg # My photo
-├── cv-gift-hlahla.pdf # Downloadable CV
-└── project1...5.png # Project screenshots
+├── profile-photo.jpg          # Your Profile photo
+├── cv-gift-hlahla.pdf         # Downloadable CV
+└── project1...5.png           # Project screenshots
 ```
 
 ---
