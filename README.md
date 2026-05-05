@@ -1,7 +1,5 @@
 # Gift Hlahla — Personal Portfolio
 
-[![Live Site](https://img.shields.io/badge/Live-gifthlahla.github.io-blue?style=flat&logo=github)](https://gifthlahla.github.io)
-
 My personal portfolio website — a modern, responsive showcase of my skills, projects, and experience as a Full-Stack Developer. Built with **React, TailwindCSS 4.1, and Framer Motion**, and deployed on GitHub Pages.
 
 ---
