@@ -91,12 +91,9 @@ The contents of dist/ are deployed to GitHub Pages. If this is your user site (u
 
 ---
 
-## Contact
-
-Email: gifthlhla78@gmail.com
-
-GitHub: www.github.com/gifthlahla
-
-LinkedIn: [www.linkedin.com/in/gifthlahla](http://www.linkedin.com/in/gift-hlahla-9437953b6)
+## Connect
+- LinkedIn: [www.linkedin.com/in/gift-hlahla-9437953b6](https://www.linkedin.com/in/gift-hlahla-9437953b6)
+- Email: [gifthlahla78@gmail.com](mailto:gifthlahla78@gmail.com)
+- Portfolio: [https://gifthlahla.github.io](https://gifthlahla.github.io)
 
 ---
