@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import NavBar from './components/Navbar'
+import NavBar from './components/NavBar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Experience from './components/Experience'
@@ -42,7 +42,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <NavBar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32 pb-32">
         <AnimatePresence mode="wait">

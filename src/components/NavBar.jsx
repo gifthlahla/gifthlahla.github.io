@@ -12,11 +12,11 @@ const navLinks = [
   { name: "Contact", href: "#contact" },
 ];
 
-function Navbar({ darkMode, toggleDarkMode }) {
+function NavBar({ darkMode, toggleDarkMode }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Change navbar style on scroll
+  // Change navBar style on scroll
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -122,4 +122,4 @@ function Navbar({ darkMode, toggleDarkMode }) {
   );
 }
 
-export default Navbar;
+export default NavBar;
