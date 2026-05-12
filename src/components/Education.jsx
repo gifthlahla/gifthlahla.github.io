@@ -12,7 +12,7 @@ const education = [
   {
     institution: "Chibuwe High School",
     degree: "Advanced Level Certificate",
-    duration: "2023 — 2023",
+    duration: "2022 — 2023",
     description:
       "Completed A‑Level studies with strong results in Mathematics, Physics, and Computer Science.",
   },

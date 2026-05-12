@@ -3,11 +3,11 @@ import { FiBriefcase, FiBookOpen } from "react-icons/fi";
 
 const experiences = [
   {
-    role: "IT Intern",
+    role: "Power Plant Operator (Intern)",
     company: "Green Fuel",
-    duration: "2024 — Present",
+    duration: "Mar 2024 - May 2024",
     description:
-      "Assisting in maintaining internal systems, troubleshooting hardware/software issues, and supporting digital transformation initiatives.",
+      "Assisting in monitoring and controlling operations of the power plant, ensuring safety protocols are followed, and gaining hands-on experience in energy production processes.",
     icon: <FiBriefcase />,
   },
   {

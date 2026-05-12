@@ -24,8 +24,8 @@ function Contact() {
     },
     {
       label: "LinkedIn",
-      value: "linkedin.com/in/gifthlahla",
-      link: "https://linkedin.com/in/gifthlahla",
+      value: "https://www.linkedin.com/in/gift-hlahla-9437953b6",
+      link: "https://www.linkedin.com/in/gift-hlahla-9437953b6/",
       icon: <FiLinkedin />,
     },
   ];
@@ -42,7 +42,7 @@ function Contact() {
       <div className="text-center md:text-left">
         <h2 className="text-3xl sm:text-4xl font-bold">Contact</h2>
         <p className="mt-2 text-gray-500 dark:text-gray-400 max-w-xl mx-auto md:mx-0">
-          Get in touch — I'd love to hear from you.
+          Get in touch, I'd love to hear from you.
         </p>
       </div>
 

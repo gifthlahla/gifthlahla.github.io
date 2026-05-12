@@ -36,10 +36,25 @@ const certifications = [
     date: "2026",
   },
   {
-    title: "Python",
-    issuer: "freeCodeCamp",
+    title: "Network Basics",
+    issuer: "Cisco Academy",
     date: "2026",
   },
+  {
+    title: "Introduction to Cybersecurity",
+    issuer: "Cisco Academy",
+    date: "2026",
+  },
+  {
+    title: "Building with the Claude API",
+    issuer: "Anthropic",
+    date: "2026",
+  },
+  {
+    title: "Introduction to Model Context Protocol",
+    issuer: "Anthropic",
+    date: "2026",
+  }
   // Add more certs as you earn them
 ];
 

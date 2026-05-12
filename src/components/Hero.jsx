@@ -87,7 +87,7 @@ function Hero() {
         >
           <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-blue-500/20 shadow-2xl shadow-blue-500/10">
             <img
-              src="/assets/profile-photo.jpg"
+              src="/assets/profile-photo.png"
               alt="Gift Hlahla"
               className="w-full h-full object-cover"
             />
