@@ -39,14 +39,13 @@ function NavBar({ darkMode, toggleDarkMode }) {
           }
         });
       },
-      { rootMargin: "-40% 0px -55% 0px", threshold: 0.25 }
+      { rootMargin: "-30% 0px -60% 0px", threshold: 0 }
     );
 
     sections.forEach((section) => observer.observe(section));
     return () => sections.forEach((section) => observer.unobserve(section));
   }, []);
 
-  // Close mobile menu when a link is clicked
   const handleLinkClick = () => {
     setMobileOpen(false);
   };
@@ -58,7 +57,7 @@ function NavBar({ darkMode, toggleDarkMode }) {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl border-b border-gray-200/50 dark:border-slate-800/50"
+          ? "bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl border-b border-gray-200/50 dark:border-slate-800/50 shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -82,32 +81,47 @@ function NavBar({ darkMode, toggleDarkMode }) {
           </a>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-2">
             {navLinks.map((link) => {
               const sectionName = link.href.replace("#", "");
+              const isActive = activeSection === sectionName;
+              
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`text-xs font-bold uppercase tracking-widest transition-all ${
-                    activeSection === sectionName
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
-                  }`}
-                  aria-current={activeSection === sectionName ? "page" : undefined}
+                  className="relative px-4 py-2 text-[10px] font-bold uppercase tracking-widest transition-colors group"
                 >
-                  {link.name}
+                  <span className={`relative z-10 transition-colors duration-300 ${
+                    isActive 
+                      ? "text-blue-600 dark:text-blue-400" 
+                      : "text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-100"
+                  }`}>
+                    {link.name}
+                  </span>
+                  
+                  {/* Moving Active Background Pill */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activePill"
+                      className="absolute inset-0 bg-blue-500/5 dark:bg-blue-400/10 rounded-full border border-blue-200/20 dark:border-blue-400/10"
+                      transition={{ type: "spring", bounce: 0.25, duration: 0.6 }}
+                    />
+                  )}
                 </a>
               );
             })}
 
+            {/* Vertical Separator */}
+            <div className="w-px h-4 bg-gray-200 dark:bg-slate-800 mx-2" />
+
             {/* Dark/Light Toggle */}
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-xl bg-gray-100 dark:bg-slate-900 text-gray-800 dark:text-gray-200 hover:scale-110 transition-all border border-transparent hover:border-gray-200 dark:hover:border-slate-800"
+              className="p-2 rounded-xl text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
               aria-label="Toggle theme"
             >
-              {darkMode ? <FiSun size={16} /> : <FiMoon size={16} />}
+              {darkMode ? <FiSun size={18} /> : <FiMoon size={18} />}
             </button>
           </div>
 
@@ -115,10 +129,10 @@ function NavBar({ darkMode, toggleDarkMode }) {
           <div className="md:hidden flex items-center gap-2">
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-xl bg-gray-100 dark:bg-slate-900 text-gray-800 dark:text-gray-200"
+              className="p-2 rounded-xl text-gray-500 dark:text-gray-400"
               aria-label="Toggle theme"
             >
-              {darkMode ? <FiSun size={16} /> : <FiMoon size={16} />}
+              {darkMode ? <FiSun size={18} /> : <FiMoon size={18} />}
             </button>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
