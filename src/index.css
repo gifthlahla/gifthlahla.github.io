@@ -11,6 +11,26 @@ body {
     color-scheme: dark;
 }
 
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 60;
+    padding: 0.75rem 1rem;
+    border-radius: 9999px;
+    background: rgba(15, 23, 42, 0.95);
+    color: white;
+    font-weight: 600;
+    transform: translateY(-140%);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0;
+}
+
+.skip-link:focus-visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
 html {
     scroll-behavior: smooth;
 }

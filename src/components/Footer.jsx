@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -10,12 +12,14 @@ function Footer() {
           © {new Date().getFullYear()} Gift Hlahla. Built with React, TailwindCSS & Framer Motion.
         </p>
 
-        <button
+        <motion.button
           onClick={scrollToTop}
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.97 }}
           className="text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
         >
           ↑ Back to top
-        </button>
+        </motion.button>
       </div>
     </footer>
   );

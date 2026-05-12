@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import NavBar from './components/NavBar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -9,6 +9,8 @@ import Skills from './components/Skills'
 import Education from './components/Education'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import ProgressBar from './components/ProgressBar'
+import SectionDivider from './components/SectionDivider'
 
 function App() {
   const [darkMode, setDarkMode] = useState(false)
@@ -41,35 +43,47 @@ function App() {
   }, [darkMode])
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors duration-500">
+      <ProgressBar />
       <NavBar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32 pb-32">
-        <AnimatePresence mode="wait">
-          {/* Each section wrapped in a motion div for page-like transitions if needed */}
-          <section id="hero">
-            <Hero />
-          </section>
-          <section id="about">
-            <About />
-          </section>
-          <section id="experience">
-            <Experience />
-          </section>
-          <section id="projects">
-            <Projects />
-          </section>
-          <section id="skills">
-            <Skills />
-          </section>
-          <section id="education">
-            <Education />
-          </section>
-          <section id="contact">
-            <Contact />
-          </section>
-        </AnimatePresence>
-      </main>
+      <motion.main
+        id="main-content"
+        key={darkMode ? 'dark' : 'light'}
+        initial={{ opacity: 0.96 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0.96 }}
+        transition={{ duration: 0.35 }}
+        className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32 pb-32"
+      >
+        <section id="hero">
+          <Hero />
+        </section>
+        <SectionDivider />
+        <section id="about">
+          <About />
+        </section>
+        <SectionDivider />
+        <section id="experience">
+          <Experience />
+        </section>
+        <SectionDivider />
+        <section id="projects">
+          <Projects />
+        </section>
+        <SectionDivider />
+        <section id="skills">
+          <Skills />
+        </section>
+        <SectionDivider />
+        <section id="education">
+          <Education />
+        </section>
+        <SectionDivider />
+        <section id="contact">
+          <Contact />
+        </section>
+      </motion.main>
 
       <Footer />
     </div>

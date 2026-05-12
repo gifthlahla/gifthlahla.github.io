@@ -1,6 +1,26 @@
 import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink, FiClock } from "react-icons/fi";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 100, damping: 18 },
+  },
+};
+
 const projects = [
   {
     title: "Banking Transaction Tracker",
@@ -72,21 +92,27 @@ function Projects() {
       </div>
 
       {/* Project Cards Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <motion.div
+        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-100px" }}
+      >
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
-            className="bg-gray-50 dark:bg-gray-800/50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow flex flex-col"
+            variants={cardVariants}
+            className="bg-white/10 dark:bg-slate-900/60 backdrop-blur-md border border-white/10 dark:border-white/10 rounded-3xl overflow-hidden shadow-xl shadow-slate-900/10 hover:-translate-y-1 transition-transform duration-300 flex flex-col"
           >
             {/* Project Image */}
             <div className="relative h-44 overflow-hidden bg-gray-200 dark:bg-gray-700">
               <img
                 src={project.image}
                 alt={project.title}
+                loading="lazy"
+                width="560"
+                height="250"
                 className="w-full h-full object-cover"
               />
               {/* Status Badge */}
@@ -152,7 +178,7 @@ function Projects() {
             </div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </motion.div>
   );
 }

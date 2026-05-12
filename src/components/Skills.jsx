@@ -80,11 +80,11 @@ function Skills() {
         {skills.map((skill, index) => (
           <motion.div
             key={skill.name}
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.92 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.05, duration: 0.3 }}
-            className="flex flex-col items-center gap-2 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+            className="flex flex-col items-center gap-2 p-4 bg-white/10 dark:bg-slate-900/70 backdrop-blur-md border border-white/10 dark:border-white/10 rounded-3xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all"
           >
             <span className="text-2xl text-blue-600 dark:text-blue-400">
               {skill.icon}
@@ -108,7 +108,7 @@ function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.4 }}
-                className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border-l-4 border-blue-600"
+                className="p-4 bg-white/10 dark:bg-slate-900/70 backdrop-blur-md rounded-3xl border border-white/10 dark:border-white/10"
               >
                 <h4 className="font-medium text-gray-800 dark:text-gray-100">
                   {cert.title}

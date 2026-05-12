@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { FiMail, FiPhone, FiGithub, FiLinkedin, FiSend } from "react-icons/fi";
 
 function Contact() {
+  const [formStatus, setFormStatus] = useState(null);
+  const [formMessage, setFormMessage] = useState("");
+
   // Replace these with your actual details
   const contactInfo = [
     {
@@ -29,6 +33,35 @@ function Contact() {
       icon: <FiLinkedin />,
     },
   ];
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setFormStatus("success");
+        setFormMessage("Thanks! Your message has been sent.");
+        form.reset();
+      } else {
+        const result = await response.json();
+        setFormStatus("error");
+        setFormMessage(result.error || "Oops! Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setFormStatus("error");
+      setFormMessage("Network error. Please check your connection and try again.");
+    }
+  };
 
   return (
     <motion.div
@@ -59,7 +92,7 @@ function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.4 }}
-              className="flex items-center gap-4 p-4 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              className="flex items-center gap-4 p-4 rounded-xl bg-white/10 dark:bg-slate-900/70 border border-white/10 dark:border-white/10 backdrop-blur-md hover:bg-white/20 dark:hover:bg-slate-900 transition-colors"
             >
               <span className="text-blue-600 dark:text-blue-400 text-xl">
                 {item.icon}
@@ -82,11 +115,12 @@ function Contact() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="md:col-span-3 bg-gray-50 dark:bg-gray-800 p-6 rounded-xl"
+          className="md:col-span-3 bg-white/10 dark:bg-slate-900/60 backdrop-blur-md border border-white/10 dark:border-white/10 p-6 rounded-3xl"
         >
           <form
             action="https://formspree.io/f/mbdwdorb"
             method="POST"
+            onSubmit={handleSubmit}
             className="space-y-5"
           >
             <div>
@@ -141,6 +175,17 @@ function Contact() {
               <FiSend />
               Send Message
             </button>
+            {formStatus && (
+              <p
+                className={`mt-2 text-sm ${
+                  formStatus === "success"
+                    ? "text-emerald-600"
+                    : "text-rose-500"
+                }`}
+              >
+                {formMessage}
+              </p>
+            )}
           </form>
           <p className="text-xs text-gray-400 dark:text-gray-500 mt-4">
             Or email directly:{" "}

@@ -15,6 +15,7 @@ const navLinks = [
 function NavBar({ darkMode, toggleDarkMode }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   // Change navBar style on scroll
   useEffect(() => {
@@ -23,6 +24,26 @@ function NavBar({ darkMode, toggleDarkMode }) {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = ["hero", "about", "experience", "projects", "skills", "education", "contact"]
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0.25 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => sections.forEach((section) => observer.unobserve(section));
   }, []);
 
   // Close mobile menu when a link is clicked (smooth scroll)
@@ -46,22 +67,30 @@ function NavBar({ darkMode, toggleDarkMode }) {
           {/* Logo / Name */}
           <a
             href="#hero"
-            className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+            className="text-xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
           >
             Gift Hlahla
           </a>
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const sectionName = link.href.replace("#", "");
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors ${
+                    activeSection === sectionName
+                      ? "text-blue-600 dark:text-blue-400"
+                      : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                  }`}
+                  aria-current={activeSection === sectionName ? "page" : undefined}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
 
             {/* Dark/Light Toggle */}
             <button
