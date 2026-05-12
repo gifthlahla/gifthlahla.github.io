@@ -65,14 +65,10 @@ function About() {
           {/* Bio Text */}
           <div className="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg text-left">
             <p>
-              I'm Gift Hlahla, a passionate full‑stack developer studying at NUST, Zimbabwe.
-              I love crafting clean, user‑friendly applications that solve real‑world problems — 
-              from mobile apps to web dashboards.
-            </p>
-            <p>
-              My toolkit includes Flutter, React, Python, and Tailwind CSS. I'm currently 
-              exploring backend services with Supabase and building projects that sharpen 
-              both my design and coding skills.
+              I’m Gift Hlahla, a Full-Stack Developer and CS student at NUST, Zimbabwe, 
+              with a strong focus on Java, C#, and Dart. I specialize in building 
+              high-performance applications, blending deep technical foundations 
+              with modern frameworks to deliver clean, user-centric experiences.
             </p>
           </div>
 
