@@ -43,7 +43,7 @@ gifthlahla.github.io/
 │ ├── App.jsx                  # Main layout, dark mode state
 │ ├── index.css                # Tailwind import + custom variant
 │ └── components/
-│ ├── Navbar.jsx               # Sticky navbar, mobile menu, theme toggle
+│ ├── NavBar.jsx               # Sticky navbar, mobile menu, theme toggle
 │ ├── Hero.jsx                 # Photo, name, tagline, CTAs
 │ ├── About.jsx                # Bio + stats
 │ ├── Experience.jsx           # Internship & tutoring timeline
