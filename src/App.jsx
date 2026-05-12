@@ -43,47 +43,48 @@ function App() {
   }, [darkMode])
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors duration-500">
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
       <ProgressBar />
       <NavBar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
-      <motion.main
+      <main
         id="main-content"
-        key={darkMode ? 'dark' : 'light'}
-        initial={{ opacity: 0.96 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0.96 }}
-        transition={{ duration: 0.35 }}
-        className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32 pb-32"
+        className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 sm:space-y-32 pb-32"
       >
-        <section id="hero">
+        <section id="hero" className="min-h-[85vh] flex items-center justify-center pt-10">
           <Hero />
         </section>
+
         <SectionDivider />
         <section id="about">
           <About />
         </section>
+
         <SectionDivider />
         <section id="experience">
           <Experience />
         </section>
+
         <SectionDivider />
         <section id="projects">
           <Projects />
         </section>
+
         <SectionDivider />
         <section id="skills">
           <Skills />
         </section>
+
         <SectionDivider />
         <section id="education">
           <Education />
         </section>
+
         <SectionDivider />
         <section id="contact">
           <Contact />
         </section>
-      </motion.main>
+      </main>
 
       <Footer />
     </div>

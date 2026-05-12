@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { FiMail, FiPhone, FiGithub, FiLinkedin, FiSend } from "react-icons/fi";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiMail, FiPhone, FiGithub, FiLinkedin, FiSend, FiCheckCircle, FiAlertCircle } from "react-icons/fi";
 
 function Contact() {
   const [formStatus, setFormStatus] = useState(null);
   const [formMessage, setFormMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Replace these with your actual details
   const contactInfo = [
     {
       label: "Email",
@@ -28,7 +28,7 @@ function Contact() {
     },
     {
       label: "LinkedIn",
-      value: "https://www.linkedin.com/in/gift-hlahla-9437953b6",
+      value: "Gift Hlahla",
       link: "https://www.linkedin.com/in/gift-hlahla-9437953b6/",
       icon: <FiLinkedin />,
     },
@@ -36,6 +36,7 @@ function Contact() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
     const form = event.target;
     const data = new FormData(form);
 
@@ -55,53 +56,54 @@ function Contact() {
       } else {
         const result = await response.json();
         setFormStatus("error");
-        setFormMessage(result.error || "Oops! Something went wrong. Please try again.");
+        setFormMessage(result.error || "Oops! Something went wrong.");
       }
     } catch (error) {
       setFormStatus("error");
-      setFormMessage("Network error. Please check your connection and try again.");
+      setFormMessage("Network error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setFormStatus(null), 5000);
     }
   };
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
-      className="space-y-10"
+      transition={{ duration: 0.5 }}
+      className="max-w-5xl mx-auto"
     >
       {/* Section Heading */}
-      <div className="text-center md:text-left">
-        <h2 className="text-3xl sm:text-4xl font-bold">Contact</h2>
-        <p className="mt-2 text-gray-500 dark:text-gray-400 max-w-xl mx-auto md:mx-0">
-          Get in touch, I'd love to hear from you.
+      <div className="text-center md:text-left mb-8">
+        <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent inline-block">
+          Contact
+        </h2>
+        <p className="mt-2 text-gray-500 dark:text-gray-400 text-lg">
+          Get in touch to discuss your next project.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-5 gap-10">
+      <div className="grid md:grid-cols-5 gap-12">
         {/* Left: Contact Info */}
-        <div className="md:col-span-2 space-y-6">
+        <div className="md:col-span-2 space-y-4">
           {contactInfo.map((item, index) => (
             <motion.a
               key={index}
               href={item.link}
               target={item.link.startsWith("http") ? "_blank" : "_self"}
               rel="noopener noreferrer"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.4 }}
-              className="flex items-center gap-4 p-4 rounded-xl bg-white/10 dark:bg-slate-900/70 border border-white/10 dark:border-white/10 backdrop-blur-md hover:bg-white/20 dark:hover:bg-slate-900 transition-colors"
+              className="flex items-center gap-5 p-5 rounded-2xl bg-white/5 dark:bg-slate-900/40 subtle-border backdrop-blur-md hover:bg-white/10 dark:hover:bg-slate-900 transition-all border border-transparent hover:border-gray-200 dark:hover:border-slate-800"
             >
-              <span className="text-blue-600 dark:text-blue-400 text-xl">
+              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gray-50 dark:bg-slate-900 text-blue-600 dark:text-blue-400 text-xl subtle-border">
                 {item.icon}
-              </span>
+              </div>
               <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 dark:text-gray-500">
                   {item.label}
                 </p>
-                <p className="font-medium text-gray-800 dark:text-gray-200">
+                <p className="font-semibold text-gray-800 dark:text-gray-200">
                   {item.value}
                 </p>
               </div>
@@ -109,94 +111,91 @@ function Contact() {
           ))}
         </div>
 
-        {/* Right: Simple Contact Form */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="md:col-span-3 bg-white/10 dark:bg-slate-900/60 backdrop-blur-md border border-white/10 dark:border-white/10 p-6 rounded-3xl"
-        >
-          <form
-            action="https://formspree.io/f/mbdwdorb"
-            method="POST"
-            onSubmit={handleSubmit}
-            className="space-y-5"
-          >
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                required
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                required
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-              >
-                Message
-              </label>
-              <textarea
-                name="message"
-                id="message"
-                rows="4"
-                required
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+        {/* Right: Refined Contact Form */}
+        <div className="md:col-span-3">
+          <div className="bg-white/5 dark:bg-slate-950/40 backdrop-blur-xl subtle-border p-8 rounded-[2.5rem]">
+            <form
+              action="https://formspree.io/f/mbdwdorb"
+              method="POST"
+              onSubmit={handleSubmit}
+              className="space-y-5"
             >
-              <FiSend />
-              Send Message
-            </button>
-            {formStatus && (
-              <p
-                className={`mt-2 text-sm ${
-                  formStatus === "success"
-                    ? "text-emerald-600"
-                    : "text-rose-500"
-                }`}
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-1">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    required
+                    className="w-full px-5 py-3 rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-gray-800 dark:text-gray-200 focus:border-blue-500 outline-none transition-all"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    className="w-full px-5 py-3 rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-gray-800 dark:text-gray-200 focus:border-blue-500 outline-none transition-all"
+                  />
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-1">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  id="message"
+                  rows="4"
+                  required
+                  className="w-full px-5 py-3 rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-gray-800 dark:text-gray-200 focus:border-blue-500 outline-none transition-all resize-none"
+                ></textarea>
+              </div>
+
+              <motion.button
+                type="submit"
+                disabled={isSubmitting}
+                whileTap={{ scale: 0.98 }}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-3.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold rounded-xl transition-all disabled:opacity-70"
               >
-                {formMessage}
-              </p>
-            )}
-          </form>
-          <p className="text-xs text-gray-400 dark:text-gray-500 mt-4">
-            Or email directly:{" "}
-            <a
-              href="mailto:gifthlahla78@gmail.com"
-              className="text-blue-600 dark:text-blue-400 underline"
-            >
-              gifthlahla78@gmail.com
-            </a>
-          </p>
-        </motion.div>
+                {isSubmitting ? (
+                  <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <>
+                    <FiSend />
+                    <span>Send Message</span>
+                  </>
+                )}
+              </motion.button>
+
+              <AnimatePresence>
+                {formStatus && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className={`flex items-center gap-3 p-4 rounded-xl subtle-border ${
+                      formStatus === "success" 
+                        ? "bg-emerald-500/5 text-emerald-600 border-emerald-500/10" 
+                        : "bg-rose-500/5 text-rose-600 border-rose-500/10"
+                    }`}
+                  >
+                    {formStatus === "success" ? <FiCheckCircle /> : <FiAlertCircle />}
+                    <p className="text-sm font-medium">{formMessage}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </form>
+          </div>
+        </div>
       </div>
     </motion.div>
   );

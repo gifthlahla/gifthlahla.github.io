@@ -7,8 +7,35 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+:root {
+  --subtle-border: rgba(226, 232, 240, 0.8);
+}
+
 .dark {
-    color-scheme: dark;
+  color-scheme: dark;
+  --subtle-border: rgba(30, 41, 59, 0.7);
+}
+
+/* Subtle Grain Texture Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+#main-content {
+  scroll-padding-top: 100px;
+}
+
+.subtle-border {
+  border: 1px solid var(--subtle-border);
 }
 
 .skip-link {
@@ -32,5 +59,16 @@ body {
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+  height: auto;
+  overflow-x: hidden;
+}
+
+body {
+  height: auto;
+  overflow-x: hidden;
+}
+
+section[id] {
+  scroll-margin-top: 100px;
 }
