@@ -75,21 +75,62 @@ function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right: Photo - Minimalist version */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative flex-shrink-0"
-        >
-          <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-[3rem] overflow-hidden border border-gray-200/50 dark:border-slate-800/50 shadow-2xl">
+        {/* Right: Photo Container - REVERTED to Flashy Aura version */}
+        <div className="relative flex-shrink-0 flex items-center justify-center">
+          
+          {/* Background Aura */}
+          <div className="absolute inset-0 z-0 flex items-center justify-center">
+             <motion.div 
+                animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 6, repeat: Infinity }}
+                className="w-80 h-80 bg-blue-500/25 rounded-full blur-[70px]"
+             />
+          </div>
+
+          {/* Image with floating bits */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="relative z-10 w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center"
+          >
             <img
               src="/assets/profile-photo.png"
               alt="Gift Hlahla"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
-          </div>
-        </motion.div>
+
+            {/* Floating Code Bits */}
+            {[...Array(4)].map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{ 
+                  y: [0, -25, 0],
+                  opacity: [0.4, 0.9, 0.4]
+                }}
+                transition={{ duration: 3 + i, repeat: Infinity, delay: i * 0.5 }}
+                className="absolute hidden sm:block pointer-events-none text-[11px] font-mono font-bold text-blue-500/70 bg-blue-500/5 px-2 py-1 rounded-md border border-blue-500/10 backdrop-blur-sm"
+                style={{ 
+                  top: i < 2 ? "10%" : "75%",
+                  left: i % 2 === 0 ? "-5%" : "80%"
+                }}
+              >
+                {i === 0 ? "<div />" : i === 1 ? "main()" : i === 2 ? "git push" : "isDev=true"}
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Glass floating badge */}
+          <motion.div
+            initial={{ x: 20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            className="absolute bottom-4 right-4 sm:bottom-0 sm:right-0 px-4 py-2 rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-gray-200/50 dark:border-slate-800/50 shadow-xl flex items-center gap-2 z-20"
+          >
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <span className="text-[10px] font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300">Open to Work</span>
+          </motion.div>
+        </div>
       </div>
 
       {/* Subtle Scroll Indicator */}
