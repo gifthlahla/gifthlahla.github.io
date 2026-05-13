@@ -1,6 +1,5 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { FiDownload } from "react-icons/fi";
-import { useEffect } from "react";
 
 const stats = [
   { number: "5+", label: "Projects Built" },
@@ -9,28 +8,6 @@ const stats = [
 ];
 
 function About() {
-  // Spotlight tracking logic (Keeping this for the interactive glow)
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const mouseXSpring = useSpring(x);
-  const mouseYSpring = useSpring(y);
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const rect = window.document.getElementById("about-photo-container")?.getBoundingClientRect();
-      if (rect) {
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-        const xPct = mouseX / rect.width - 0.5;
-        const yPct = mouseY / rect.height - 0.5;
-        x.set(xPct);
-        y.set(yPct);
-      }
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [x, y]);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -46,16 +23,7 @@ function About() {
           id="about-photo-container"
           className="flex justify-center relative min-h-[450px]"
         >
-          {/* Dynamic Spotlight - Follows Mouse */}
-          <div className="absolute inset-0 z-0 flex items-center justify-center">
-            <motion.div
-              style={{
-                translateX: useTransform(mouseXSpring, [-0.5, 0.5], [-30, 30]),
-                translateY: useTransform(mouseYSpring, [-0.5, 0.5], [-30, 30]),
-              }}
-              className="w-96 h-96 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-transparent rounded-full blur-[100px] opacity-70"
-            />
-          </div>
+
 
           {/* The Photo (Static / No Tilt) */}
           <motion.div

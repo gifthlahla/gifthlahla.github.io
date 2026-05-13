@@ -6,13 +6,15 @@ My personal portfolio website — a modern, responsive showcase of my skills, pr
 
 ## Features
 
+- **Interactive Visuals** — Animated aura effects and floating "code bits"
+- **Modern Aesthetics** — Glassmorphism, gradients, and fluid micro-interactions
 - **Dark/Light mode** — toggle that remembers your preference
 - **Smooth scroll navigation** — sticky navbar with mobile menu
 - **Animated sections** — built with Framer Motion (scroll reveals, staggered entrances)
 - **Responsive design** — looks great on phones, tablets, and desktops
 - **Working contact form** — powered by Formspree (sends directly to my email)
 - **Project showcase** — cards with live demo & GitHub links
-- **Downloadable CV** — one‑click PDF download
+- **Downloadable Resume** — one‑click PDF download
 
 ---
 
@@ -53,10 +55,11 @@ gifthlahla.github.io/
 │ ├── Contact.jsx              # Contact info + working form
 │ └── Footer.jsx               # Copyright & back-to-top
 └── public/
-└── assets/
-├── profile-photo.jpg          # Your Profile photo
-├── cv-gift-hlahla.pdf         # Downloadable CV
-└── project1...5.png           # Project screenshots
+    └── assets/
+        ├── hero-photo.png         # Photo used in About section
+        ├── profile-photo.png      # Photo used in Hero section
+        ├── cv-gift-hlahla.pdf     # Downloadable Resume
+        └── project1...5.png       # Project screenshots
 ```
 
 ---
